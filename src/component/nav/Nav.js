@@ -3,9 +3,13 @@ import LOGO from "../../assets/Logo.png";
 import AVATAR from "../../assets/avatar.png";
 import "./Nav.css";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logOut } from "../redux/UserSlice";
+import { auth } from "../../firebase/firebase";
 function Nav() {
   const [scroll, setScroll] = useState(false);
   const history = useHistory();
+  const dispatch = useDispatch();
   const scrollNav = () => {
     if (window.scrollY > 100) {
       setScroll(true);
@@ -23,14 +27,16 @@ function Nav() {
     <div className={`nav ${scroll && "nav_black"}`}>
       <div className="nav_content">
         <img className="nav_logo" src={LOGO} alt="logo" />
-        <img
+        <button
           onClick={() => {
-            history.push("/profile");
+            auth.signOut();
+            dispatch(logOut());
+            history.push("/");
           }}
-          className="nav_avatar"
-          src={AVATAR}
-          alt="avatar"
-        />
+          className="btn btn_subscribe"
+        >
+          Sign Out
+        </button>
       </div>
     </div>
   );

@@ -17,7 +17,6 @@ export default function SignUp() {
     auth
       .createUserWithEmailAndPassword(emailValue, passwordValue)
       .then((user) => {
-        console.log(user);
         if (user.additionalUserInfo.isNewUser) {
           history.push("/signIn");
           return;

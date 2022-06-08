@@ -86,14 +86,14 @@ code {
   right: 0;
   left: 0;
   bottom: 0;
+  z-index: 10;
   background-color: black;
 }
 
 .nav_content {
-  position: fixed;
   display: flex;
   justify-content: space-between;
-  padding-left: 3rem;
+  align-items: center;
 }
 
 .nav_logo {
@@ -102,13 +102,6 @@ code {
   object-fit: contain;
   object-position: center;
   margin-right: 65rem;
-}
-
-.nav_avatar {
-  max-width: 70px;
-  height: 70px;
-  object-fit: contain;
-  object-position: center;
 }
 
 /* ----------------------------banner------------------------------- */
@@ -156,8 +149,7 @@ code {
 }
 
 .row_backdrop {
-  width: 100%;
-  max-height: 120px;
+  width: 280px;
   transition: all 0.3s ease-in-out;
   margin-right: 10px;
   object-fit: contain;
@@ -170,11 +162,36 @@ code {
 }
 
 .row_poster {
-  width: 100%;
-  max-height: 250px;
+  width: 200px;
+  height: 300px;
   margin-right: 10px;
   transition: all 0.3s ease-in-out;
   object-fit: contain;
+}
+.row_movie{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.row_youtube_poster{
+position: absolute;
+top: 38%;
+left: 50%;
+transform: translateX(-50%);
+display: none;
+transition: all 0.3 ease-in-out;
+}
+.row_youtube_backdrop{
+position: absolute;
+left: 50%;
+transform: translate(-50%);
+transition: all 0.5 ease-in-out;
+font-weight: 500;
+font-size: 16px;
+}
+.row_icon{
+  color:var(--secondary-color);
+  font-size: 70px;
 }
 
 .row_poster:hover {
@@ -182,6 +199,24 @@ code {
   opacity: 0.8;
   cursor: pointer;
 }
+.row_poster:hover ~ .row_youtube_poster{
+  display: block;
+  transition: all 0.3 ease-in-out;
+  cursor: pointer;
+}
+.row_backdrop:hover ~ .row_youtube_backdrop{
+  bottom: -100%;
+  transition: all 0.5 ease-in-out;
+  animation: to-center 0.5s 0.5s forwards;
+}
+@keyframes to-center {
+  100% {
+    bottom: 40%;
+  }
+}
+
+
+
 
 /* --------------------------------Login_Screen------------------------------ */
 
@@ -208,6 +243,10 @@ code {
   height: 80px;
   object-fit: contain;
   object-position: center;
+  
+}
+.login_nav_logo:hover{
+  cursor: pointer;
 }
 
 .login_content {
@@ -427,4 +466,59 @@ margin: 20px 0;
   color: var(--text-color);
   padding: 10px;
   border: none;
+}
+/* -----------------------------FOOTER-------------------------------- */
+.footer{
+  color: var(--text-color);
+  padding-top: 60px;
+}
+.footer_content{
+text-align: center;
+}
+.footer_list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin-top: 20px;
+}
+.footer_list > li{
+  margin-left: 60px;
+  transition: all 0.5s ease-in-out;
+  padding: 10px;
+  border-radius: 20px;
+}
+.footer_list > li:hover{
+  background-color: var(--text-color);
+  color: red;
+  font-weight: 500;
+  cursor: pointer;
+}
+/* ---------------------------------- 404 NOT FOUND ------------------------- */
+.notFound{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--secondary-color);
+  font-size: 60px;
+  font-weight: 800;
+}
+@media (max-width: 640px) {
+  .footer_list{
+    display: block;
+    margin: 0;
+  }
+  .footer_list > li{
+    margin: 0;
+  }
+  .nav_logo{
+    margin-right: 80px;
+  }
+}
+@media (min-width: 640px) and (max-width:768px){
+  .nav_logo{
+    margin-right: 26rem;
+  }
+
 }

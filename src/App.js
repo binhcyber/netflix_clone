@@ -11,6 +11,7 @@ import { signIn, signUp } from "./component/redux/UserSlice";
 import { useEffect } from "react";
 import { auth } from "./firebase/firebase";
 import { useHistory } from "react-router-dom";
+import NotFound from "./component/NotFound/NotFound";
 function App() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -56,9 +57,9 @@ function App() {
         />
         <Route
           exact
-          path={"/profile"}
+          path={"*"}
           render={() => {
-            return <LoginScreen Component={Profile} />;
+            return <LoginScreen Component={NotFound} />;
           }}
         />
       </Switch>

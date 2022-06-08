@@ -10,12 +10,10 @@ export const userSlice = createSlice({
   reducers: {
     signUp: (state, action) => {
       state.value = action.payload;
-      console.log(action.payload);
       localstorageserv.userInfor.set(action.payload);
     },
     signIn: (state, action) => {
       state.value = action.payload;
-      console.log(action.payload);
       localstorageserv.userInfor.set(action.payload);
     },
     logOut: (state, action) => {

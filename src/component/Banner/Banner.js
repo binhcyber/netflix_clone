@@ -4,15 +4,15 @@ import BANNER from "../../assets/banner.jpg";
 import requests from "../../Axios/request/Request";
 import instance from "../../Axios/Instance/Instance";
 import { IMAGE_URL } from "../../Axios/Domain";
+import TypewriterComponent from "typewriter-effect";
 function Banner() {
-  const [bannerMovie, setBannerMovie] = useState(BANNER);
+  const [bannerMovie, setBannerMovie] = useState(null);
   const truncate = (string, n) => {
     return string?.length > n ? string.slice(0, n) + "..." : string;
   };
   useEffect(() => {
     const fetchData = async () => {
       const dataMovie = await instance.get(requests.fetchNetflixOriginals);
-
       setBannerMovie(
         dataMovie.data.results[
           Math.floor(Math.random() * dataMovie.data.results.length - 1)
@@ -22,6 +22,7 @@ function Banner() {
     };
     fetchData();
   }, []);
+
   return (
     <div
       style={{

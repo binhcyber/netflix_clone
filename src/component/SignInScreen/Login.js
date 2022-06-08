@@ -5,19 +5,17 @@ export default function Login() {
   const history = useHistory();
   return (
     <div className="login_content">
-      <h1>Title</h1>
-      <p>Description</p>
-      <form className="login_form">
-        <input className="login_input" placeholder="email" />
-        <button
-          className="btn btn_login"
-          onClick={() => {
-            history.push("/signIn");
-          }}
-        >
-          GET STARTED
-        </button>
-      </form>
+      <h3>Welcome back!</h3>
+      <h1>Unlimited movies, TV shows, and more.</h1>
+      <p>Watch anywhere. Cancel anytime</p>
+      <button
+        className="btn btn_login"
+        onClick={() => {
+          history.push("/signUp");
+        }}
+      >
+        Sign Up
+      </button>
     </div>
   );
 }

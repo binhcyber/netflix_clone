@@ -8,7 +8,13 @@ export default function LoginScreen({ Component }) {
   return (
     <div className="login">
       <div className="login_nav">
-        <img className="login_nav_logo" src={LOGIN_NAV} />
+        <img
+          onClick={() => {
+            history.push("/home");
+          }}
+          className="login_nav_logo"
+          src={LOGIN_NAV}
+        />
         <button
           onClick={() => {
             history.push("/signIn");

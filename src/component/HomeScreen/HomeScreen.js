@@ -6,6 +6,7 @@ import request from "../../Axios/request/Request";
 import localstorageserv from "../../LocalStorage/LocalStorage";
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import Footer from "../Footer/Footer";
 export default function HomeScreen() {
   const history = useHistory();
   return localstorageserv.userInfor.get() ? (
@@ -24,6 +25,7 @@ export default function HomeScreen() {
       <Row title="Horror Movies" fetchUrl={request.fetchHorrorMovies} />
       <Row title="Romance Movies" fetchUrl={request.fetchRomanceMovies} />
       <Row title="Documentaries" fetchUrl={request.fetchDocumentaries} />
+      <Footer />
     </div>
   ) : (
     <Redirect to={"/signIn"} />
